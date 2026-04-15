@@ -1,20 +1,30 @@
 import styled from "styled-components";
 
-export const Footer = styled.div`
-  background-color: #00308f;
-  padding: 16px;
+export const Footer = styled.footer`
+  background: #ffffff;
+  border-top: 1px solid #E2E8F0;
+  padding: 20px 40px;
 
   a {
     display: flex;
-    text-align: center;
     align-items: center;
-    gap: 5px;
-    justify-content: center;
-    align-content: center;
-    color: white;
+    gap: 6px;
+    color: #94A3B8;
     text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    width: fit-content;
+    margin: 0 auto;
+    transition: color 0.15s ease;
+
     :hover {
-      opacity: 0.8;
+      color: #0F172A;
+    }
+
+    h4 {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 500;
     }
   }
 `;
