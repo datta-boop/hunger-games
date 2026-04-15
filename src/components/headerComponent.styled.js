@@ -10,7 +10,13 @@ export const Header = styled.div`
   font-weight: 600;
   font-size: larger;
   box-shadow: 0 4px 10px 0 #555;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 12px;
+  }
 `;
+
 export const AppNameComponent = styled.div`
   display: flex;
   align-items: center;
@@ -28,8 +34,15 @@ export const SearchComponent = styled.div`
   padding: 8px;
   border-radius: 6px;
   width: 50%;
+  max-width: 500px;
+  min-width: 200px;
   align-items: center;
   gap: 5px;
+
+  :focus-within {
+    outline: 2px solid #a0c8ff;
+    outline-offset: 2px;
+  }
 
   img {
     width: 20px;
@@ -45,5 +58,10 @@ export const SearchComponent = styled.div`
   }
   input:focus {
     outline: none;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+    max-width: 100%;
   }
 `;

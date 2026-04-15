@@ -8,16 +8,19 @@ export const RecipeListContainer = styled.div`
   justify-content: space-evenly;
   row-gap: 30px;
   column-gap: 15px;
+
+  @media (max-width: 600px) {
+    padding: 15px;
+  }
 `;
 
 export const RecipeContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px 14px;
-  border-color: black;
   border: 5px;
   box-shadow: 5px 10px 20px 10px #13274f;
-  width: 200px;
+  width: 240px;
   background-color: #00308f;
   border-radius: 6px;
   align-items: center;
@@ -29,8 +32,7 @@ export const RecipeContainer = styled.div`
     flex-direction: column;
     box-sizing: border-box;
     width: 100%;
-    padding-right: 12px;
-    padding-left: 0px;
+    padding: 0;
   }
 `;
 
@@ -39,20 +41,20 @@ export const CoverImage = styled.img`
   width: 200px;
   object-fit: cover;
   border-radius: 50%;
-
   border: solid 2px white;
   padding: 4px;
 `;
+
 export const RecipeName = styled.span`
   font-size: 18px;
   font-weight: bold;
-  color: black;
+  color: white;
   margin-bottom: 5px;
   padding-block-start: 5px;
   padding-block-end: 5px;
-  color: white;
 `;
-export const IngredientsText = styled.span`
+
+export const IngredientsText = styled.button`
   font-size: 18px;
   border: solid 2px white;
   padding: 5px;
@@ -60,13 +62,15 @@ export const IngredientsText = styled.span`
   color: white;
   border-radius: 8px;
   margin-bottom: 10px;
-
   width: 100%;
+  background: transparent;
+  cursor: pointer;
   :hover {
-    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.15);
   }
 `;
-export const SeeMoreText = styled.span`
+
+export const SeeMoreText = styled.button`
   font-size: 18px;
   border: solid 2px white;
   padding: 5px;
@@ -74,7 +78,9 @@ export const SeeMoreText = styled.span`
   color: white;
   border-radius: 8px;
   width: 100%;
+  background: transparent;
+  cursor: pointer;
   :hover {
-    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.15);
   }
 `;
