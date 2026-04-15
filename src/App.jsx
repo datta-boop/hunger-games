@@ -39,7 +39,7 @@ const Container = styled.div`
 const Placeholder = styled.img`
   width: 200px;
   height: 200px;
-  margin: 149px;
+  margin: auto;
   opacity: 50%;
 `;
 
@@ -72,22 +72,24 @@ const RecipeComponent = (props) => {
   const { recipeObj } = props;
   return (
     <>
-      <Dialog open={show}>
+      <Dialog open={show} onClose={() => setShow(false)}>
         <DialogTitle align="center" variant="h4" sx={{ color: "#13274F" }}>
           How to cook this?
         </DialogTitle>
         <DialogContent>
           <DialogTable>
-            <tr>
-              <th>Image</th>
-              <th>Ingredients</th>
-              <th>Weight</th>
-            </tr>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Ingredients</th>
+                <th>Weight</th>
+              </tr>
+            </thead>
             <tbody>
               {recipeObj.ingredients.map((ingredientObj) => (
-                <tr>
+                <tr key={ingredientObj.text}>
                   <td>
-                    <IngredientsImage src={ingredientObj.image} />
+                    <IngredientsImage src={ingredientObj.image} alt={ingredientObj.text} />
                   </td>
                   <td>{ingredientObj.text}</td>
                   <td>{ingredientObj.weight.toFixed(2)}</td>
@@ -159,14 +161,14 @@ function App() {
       <RecipeListContainer>
         {recipeList.length ? (
           recipeList.map((recipeObj) => (
-            <RecipeComponent recipeObj={recipeObj.recipe} />
+            <RecipeComponent key={recipeObj.recipe.uri} recipeObj={recipeObj.recipe} />
           ))
         ) : (
           <Placeholder src={pizzaLogo} />
         )}
       </RecipeListContainer>
       <Footer>
-        <a href="/https://github.com/datta-boop">
+        <a href="https://github.com/datta-boop" target="_blank" rel="noreferrer">
           <AiFillGithub size={25} />
           <h4>@datta-boop</h4>
         </a>
