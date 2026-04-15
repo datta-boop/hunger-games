@@ -13,6 +13,13 @@ const shimmerMixin = css`
   animation: ${shimmer} 1.4s ease infinite;
 `;
 
+// ——— Card entrance animation ———
+
+const fadeInUp = keyframes`
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+`;
+
 // ——— Recipe list grid ———
 
 export const RecipeListContainer = styled.div`
@@ -41,10 +48,40 @@ export const RecipeContainer = styled.div`
   transition: box-shadow 0.2s ease, transform 0.2s ease;
   display: flex;
   flex-direction: column;
+  animation: ${fadeInUp} 0.35s ease both;
+  animation-delay: ${props => Math.min((props.$index || 0) * 60, 500)}ms;
 
   &:hover {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
     transform: translateY(-2px);
+  }
+`;
+
+export const CardImageWrapper = styled.div`
+  position: relative;
+  flex-shrink: 0;
+`;
+
+export const FavoriteBtn = styled.button`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+  color: ${props => props.$active ? '#EF4444' : '#94A3B8'};
+
+  &:hover {
+    background: #fff;
+    transform: scale(1.12);
   }
 `;
 
@@ -53,7 +90,6 @@ export const CoverImage = styled.img`
   height: 180px;
   object-fit: cover;
   display: block;
-  flex-shrink: 0;
 `;
 
 export const RecipeCardBody = styled.div`
@@ -122,6 +158,7 @@ export const RecipeButtonRow = styled.div`
   display: flex;
   gap: 8px;
   padding: 8px 16px 14px;
+  align-items: center;
 `;
 
 export const IngredientsText = styled.button`
@@ -157,6 +194,25 @@ export const SeeMoreText = styled.button`
 
   &:hover {
     background: #6D28D9;
+  }
+`;
+
+export const CopyBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: ${props => props.$copied ? '#15803D' : '#CBD5E1'};
+  padding: 6px;
+  border-radius: 6px;
+  transition: color 0.15s ease, background 0.15s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    color: ${props => props.$copied ? '#15803D' : '#64748B'};
+    background: #F8FAFC;
   }
 `;
 
