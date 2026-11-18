@@ -7,7 +7,19 @@
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='18' r='18' fill='%23C9F23B'/%3E%3Cpath d='M9 20h18a9 9 0 0 1-18 0Z' fill='%2314160A'/%3E%3C/svg%3E"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0F0E0C" />
+    <meta name="theme-color" content="#F6F2E9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0F0E0C" media="(prefers-color-scheme: dark)" />
+    <style>
+      html { background: #0F0E0C; color-scheme: dark; }
+      @media (prefers-color-scheme: light) { html:not([data-theme]) { background: #F6F2E9; color-scheme: light; } }
+      html[data-theme="light"] { background: #F6F2E9; color-scheme: light; }
+    </style>
+    <script>
+      try {
+        var t = JSON.parse(localStorage.getItem("hg_theme"));
+        if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
     <meta
       name="description"
       content="Search thousands of recipes. Filter by diet, calories and time, save the keepers, and leave your own reviews."

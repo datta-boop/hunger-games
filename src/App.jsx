@@ -6,6 +6,7 @@ import { FiArrowUpRight, FiGrid, FiList } from "react-icons/fi";
 import { GlobalStyle } from "./styles/global";
 import { APP_ID, API_KEY, SORT_OPTIONS, POPULAR_SEARCHES, LS } from "./constants";
 import { useStored } from "./hooks/useStored";
+import { useTheme } from "./hooks/useTheme";
 import { greeting, pad } from "./utils";
 import { Sidebar } from "./components/Sidebar";
 import { RecipeDrawer } from "./components/RecipeDrawer";
@@ -51,7 +52,7 @@ const HeroTitle = styled.h1`
   letter-spacing: -0.045em;
   text-wrap: balance;
   animation: ${rise} 0.5s var(--ease) 70ms both;
-  em { font-style: normal; color: var(--accent); }
+  em { font-style: normal; color: var(--accent-text); }
 `;
 
 const HeroCopy = styled.p`
@@ -90,8 +91,8 @@ const IndexRow = styled.button`
   text-align: left;
   transition: color 0.16s var(--ease);
   svg { color: var(--faint); stroke-width: 1.5; transition: color 0.16s var(--ease), translate 0.2s var(--ease); }
-  &:hover { color: var(--accent); }
-  &:hover svg { color: var(--accent); translate: 4px -4px; }
+  &:hover { color: var(--accent-text); }
+  &:hover svg { color: var(--accent-text); translate: 4px -4px; }
   li:last-child > & { border-bottom: 1px solid var(--line); }
 `;
 
@@ -189,6 +190,7 @@ export default function App() {
   const [sortBy, setSortBy] = useState("");
   const [savedOnly, setSavedOnly] = useState(false);
 
+  const [theme, toggleTheme] = useTheme();
   const [view, setView] = useStored(LS.view, "index");
   const [favorites, setFavorites] = useStored(LS.favorites, {});
   const [recent, setRecent] = useStored(LS.recent, []);
@@ -502,6 +504,8 @@ export default function App() {
           favCount={favCount}
           profile={profile}
           onOpenProfile={() => setProfileOpen(true)}
+          theme={theme}
+          onToggleTheme={toggleTheme}
         />
         <Main>{body}</Main>
       </Shell>

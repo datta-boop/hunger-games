@@ -39,7 +39,7 @@ const buttonTone = {
   primary: css`
     background: var(--accent);
     color: var(--accent-ink);
-    &:hover:not(:disabled) { background: #D8FF55; }
+    &:hover:not(:disabled) { background: var(--accent-hover); }
   `,
   soft: css`
     background: var(--surface-2);
@@ -83,9 +83,9 @@ export const IconButton = styled.button`
   border-radius: 50%;
   background: ${(p) => (p.$floating ? "rgba(15, 14, 12, 0.62)" : "var(--surface-2)")};
   backdrop-filter: ${(p) => (p.$floating ? "blur(8px)" : "none")};
-  color: ${(p) => (p.$on ? p.$onColor || "var(--heat)" : "var(--muted)")};
+  color: ${(p) => (p.$on ? p.$onColor || "var(--heat)" : p.$floating ? "rgba(242, 236, 223, 0.88)" : "var(--muted)")};
   &:hover:not(:disabled) {
-    color: ${(p) => (p.$on ? p.$onColor || "var(--heat)" : "var(--text)")};
+    color: ${(p) => (p.$on ? p.$onColor || "var(--heat)" : p.$floating ? "#fff" : "var(--text)")};
     background: ${(p) => (p.$floating ? "rgba(15, 14, 12, 0.82)" : "var(--surface-3)")};
   }
   svg { stroke-width: 1.75; }
@@ -102,7 +102,7 @@ export const Chip = styled.button`
   background: ${(p) => (p.$on ? "var(--accent)" : "var(--surface-2)")};
   color: ${(p) => (p.$on ? "var(--accent-ink)" : "var(--muted)")};
   &:hover {
-    background: ${(p) => (p.$on ? "#D8FF55" : "var(--surface-3)")};
+    background: ${(p) => (p.$on ? "var(--accent-hover)" : "var(--surface-3)")};
     color: ${(p) => (p.$on ? "var(--accent-ink)" : "var(--text)")};
   }
 `;
@@ -150,7 +150,7 @@ export const Field = styled.input`
   font-size: 15px;
   transition: box-shadow 0.16s var(--ease);
   &::placeholder { color: var(--faint); }
-  &:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--accent); }
+  &:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--focus); }
 `;
 
 export const TextArea = styled.textarea`
@@ -165,5 +165,5 @@ export const TextArea = styled.textarea`
   resize: vertical;
   transition: box-shadow 0.16s var(--ease);
   &::placeholder { color: var(--faint); }
-  &:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--accent); }
+  &:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--focus); }
 `;

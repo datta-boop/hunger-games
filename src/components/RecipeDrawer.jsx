@@ -31,7 +31,7 @@ const Hero = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    outline: 1px solid oklch(1 0 0 / 0.1);
+    outline: 1px solid var(--img-outline);
     outline-offset: -1px;
   }
   &::after {
@@ -77,7 +77,7 @@ const Tag = styled.span`
   padding: 4px 10px;
   border-radius: 999px;
   background: var(--surface-2);
-  color: var(--accent);
+  color: var(--accent-text);
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.06em;
@@ -127,7 +127,7 @@ const Footer = styled.div`
   gap: 8px;
   padding: 14px 24px calc(14px + env(safe-area-inset-bottom));
   background: var(--surface);
-  box-shadow: 0 -1px 0 var(--line), 0 -16px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 -1px 0 var(--line), 0 -16px 32px rgb(var(--shadow-rgb) / 0.35);
 `;
 
 // ——— Ingredients ———
@@ -153,7 +153,7 @@ const Item = styled.label`
   transition: background-color 0.16s var(--ease);
   &:hover { background: var(--surface-2); }
   input { position: absolute; opacity: 0; pointer-events: none; }
-  input:focus-visible + .box { outline: 2px solid var(--accent); outline-offset: 2px; }
+  input:focus-visible + .box { outline: 2px solid var(--focus); outline-offset: 2px; }
   .box {
     display: inline-flex;
     align-items: center;
@@ -172,7 +172,7 @@ const Item = styled.label`
     height: 44px;
     border-radius: 12px;
     object-fit: cover;
-    outline: 1px solid oklch(1 0 0 / 0.1);
+    outline: 1px solid var(--img-outline);
     outline-offset: -1px;
     opacity: ${(p) => (p.$done ? 0.4 : 1)};
     transition: opacity 0.16s var(--ease);
@@ -265,7 +265,7 @@ const Link = styled.button`
   padding: 0 4px;
   border: 0;
   background: none;
-  color: ${(p) => (p.$danger ? "var(--heat)" : "var(--accent)")};
+  color: ${(p) => (p.$danger ? "var(--heat)" : "var(--accent-text)")};
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -518,7 +518,7 @@ function DrawerBody({
         </IconButton>
         <IconButton
           $on={copied}
-          $onColor="var(--accent)"
+          $onColor="var(--accent-text)"
           aria-label={copied ? "Link copied" : "Copy recipe link"}
           onClick={() => onCopy(recipe)}
         >
@@ -536,7 +536,7 @@ export function RecipeDrawer({ open, recipe, onClose, ...rest }) {
       open={open}
       onClose={onClose}
       transitionDuration={{ enter: 320, exit: 220 }}
-      ModalProps={{ BackdropProps: { style: { backgroundColor: "rgba(8,7,6,0.72)" } } }}
+      ModalProps={{ BackdropProps: { style: { backgroundColor: "rgb(var(--scrim-rgb) / 0.62)" } } }}
       PaperProps={{
         sx: {
           width: { xs: "100%", sm: 580 },
@@ -544,7 +544,7 @@ export function RecipeDrawer({ open, recipe, onClose, ...rest }) {
           backgroundColor: "var(--surface)",
           backgroundImage: "none",
           color: "var(--text)",
-          boxShadow: "-1px 0 0 var(--line), -32px 0 80px rgba(0,0,0,0.5)",
+          boxShadow: "-1px 0 0 var(--line), -32px 0 80px rgb(var(--shadow-rgb) / 0.5)",
         },
       }}
     >

@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import { FiSearch, FiX, FiClock, FiTrendingUp, FiHeart, FiSliders, FiGithub, FiUser } from "react-icons/fi";
+import { FiSearch, FiX, FiClock, FiTrendingUp, FiHeart, FiSliders, FiGithub, FiUser, FiSun, FiMoon } from "react-icons/fi";
 import { Logo } from "./Logo";
-import { Chip, Mono, press } from "./ui";
+import { Chip, IconButton, Mono, press } from "./ui";
 import { FILTER_GROUPS, POPULAR_SEARCHES } from "../constants";
 
 const Rail = styled.aside`
@@ -17,7 +17,7 @@ const Rail = styled.aside`
     top: 0;
     height: 100vh;
     overflow-y: auto;
-    gap: 28px;
+    gap: 22px;
     padding: 28px 24px;
     border-bottom: 0;
     border-right: 1px solid var(--line);
@@ -35,20 +35,21 @@ const RailTop = styled.div`
 
 const ProfileBtn = styled.button`
   ${press}
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  max-width: 150px;
-  min-height: 44px;
-  padding: 0 14px 0 6px;
+  gap: 12px;
+  width: 100%;
+  min-height: 60px;
+  padding: 0 18px 0 14px;
   border: 0;
-  border-radius: 999px;
+  border-radius: 18px;
   background: var(--surface-2);
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 500;
-  &:hover { background: var(--surface-3); color: var(--text); }
-  span.name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  &:hover { background: var(--surface-3); }
+  span.name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   svg { stroke-width: 1.75; }
 `;
 
@@ -79,7 +80,7 @@ const SearchBox = styled.div`
   background: var(--surface-2);
   color: var(--muted);
   transition: box-shadow 0.16s var(--ease);
-  &:focus-within { box-shadow: 0 0 0 2px var(--accent); color: var(--text); }
+  &:focus-within { box-shadow: 0 0 0 2px var(--focus); color: var(--text); }
   svg { flex-shrink: 0; stroke-width: 1.75; }
   input {
     flex: 1;
@@ -131,7 +132,7 @@ const Dropdown = styled.div`
   padding: 8px;
   border-radius: 16px;
   background: var(--surface-2);
-  box-shadow: 0 0 0 1px var(--line), 0 16px 40px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 0 0 1px var(--line), 0 16px 40px rgb(var(--shadow-rgb) / 0.55);
 `;
 
 const DropLabel = styled(Mono)`
@@ -227,7 +228,7 @@ const ClearAll = styled.button`
   padding: 0 4px;
   border: 0;
   background: none;
-  color: var(--accent);
+  color: var(--accent-text);
   font-size: 13px;
   font-weight: 600;
   text-decoration: underline;
@@ -273,6 +274,7 @@ export function Sidebar({
   query, onQuery, onClear, inputRef, recent, onPick,
   filters, onToggleFilter, onClearFilters, activeCount,
   savedOn, onToggleSaved, favCount, profile, onOpenProfile,
+  theme, onToggleTheme,
 }) {
   const [suggest, setSuggest] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
@@ -295,10 +297,14 @@ export function Sidebar({
     <Rail aria-label="Search and filters">
       <RailTop>
         <Logo />
-        <ProfileBtn onClick={onOpenProfile} aria-label={profile ? `Edit profile, ${profile.username}` : "Set up profile"}>
-          <Avatar>{profile?.avatar || <FiUser size={15} />}</Avatar>
-          <span className="name">{profile?.username || "Sign in"}</span>
-        </ProfileBtn>
+        <IconButton
+          type="button"
+          onClick={onToggleTheme}
+          aria-label={theme === "light" ? "Switch to dark theme" : "Switch to light theme"}
+          title={theme === "light" ? "Dark theme" : "Light theme"}
+        >
+          {theme === "light" ? <FiMoon size={20} /> : <FiSun size={20} />}
+        </IconButton>
       </RailTop>
 
       <SearchWrap ref={wrapRef}>
@@ -394,6 +400,12 @@ export function Sidebar({
         </span>
         <span className="n">{String(favCount).padStart(2, "0")}</span>
       </SavedBtn>
+
+      <ProfileBtn onClick={onOpenProfile} aria-label={profile ? `Edit profile, ${profile.username}` : "Set up profile"}>
+        <Avatar>{profile?.avatar || <FiUser size={16} />}</Avatar>
+        <span className="name">{profile?.username || "Make a profile"}</span>
+        <Mono>{profile ? "Edit" : "Set up"}</Mono>
+      </ProfileBtn>
 
       <RailFoot href="https://github.com/datta-boop" target="_blank" rel="noreferrer">
         <FiGithub size={16} /> @datta-boop

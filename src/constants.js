@@ -70,4 +70,5 @@ export const LS = {
   profile: "hg_profile",
   reviews: "hg_reviews",
   view: "hg_view",
+  theme: "hg_theme",
 };

@@ -52,7 +52,7 @@ const Thumb = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  outline: 1px solid oklch(1 0 0 / 0.1);
+  outline: 1px solid var(--img-outline);
   outline-offset: -1px;
   border-radius: 10px;
   transition: scale 0.4s var(--ease);
@@ -142,9 +142,9 @@ const TileOpen = styled.button`
   background: var(--surface-2);
   color: #fff;
   text-align: left;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 1px 2px rgb(var(--shadow-rgb) / 0.4), 0 12px 32px rgb(var(--shadow-rgb) / 0.35);
   transition: box-shadow 0.2s var(--ease), translate 0.2s var(--ease);
-  &:hover { translate: 0 -3px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 20px 44px rgba(0, 0, 0, 0.5); }
+  &:hover { translate: 0 -3px; box-shadow: 0 2px 4px rgb(var(--shadow-rgb) / 0.4), 0 20px 44px rgb(var(--shadow-rgb) / 0.5); }
   &:hover img { scale: 1.05; }
 `;
 
@@ -154,7 +154,7 @@ const TileImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  outline: 1px solid oklch(1 0 0 / 0.1);
+  outline: 1px solid var(--img-outline);
   outline-offset: -1px;
   border-radius: 24px;
   transition: scale 0.5s var(--ease);

@@ -73,7 +73,7 @@ export function ProfileModal({ open, onClose, profile, onSave }) {
     <Dialog
       open={open}
       onClose={onClose}
-      BackdropProps={{ style: { backgroundColor: "rgba(8,7,6,0.72)" } }}
+      BackdropProps={{ style: { backgroundColor: "rgb(var(--scrim-rgb) / 0.62)" } }}
       PaperProps={{
         sx: {
           width: "100%",
@@ -83,7 +83,7 @@ export function ProfileModal({ open, onClose, profile, onSave }) {
           backgroundColor: "var(--surface)",
           backgroundImage: "none",
           color: "var(--text)",
-          boxShadow: "0 0 0 1px var(--line), 0 32px 80px rgba(0,0,0,0.6)",
+          boxShadow: "0 0 0 1px var(--line), 0 32px 80px rgb(var(--shadow-rgb) / 0.6)",
         },
       }}
     >
