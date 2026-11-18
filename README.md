@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Datta's Recipebook
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A recipe search app with a dark, editorial "after-hours kitchen" look and a matching light theme. Search any dish or ingredient, narrow it by diet, calories and time, save the keepers, and leave your own reviews.
 
-## Available Scripts
+Recipe data comes from the [Edamam Recipe Search API](https://developer.edamam.com/edamam-recipe-api).
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+**Search and filter**
+- Live search with a debounce, recent searches and popular starting points
+- Filter by meal, diet, calories per serving and total time
+- Sort by best match, calories, time or number of ingredients
+- Load more results; shareable links through a `?q=` URL parameter
+- Press `/` anywhere to jump to the search box
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Browse**
+- Numbered index list with a kcal / minutes / ingredients column, or an image-led gallery (your choice is remembered)
+- Recipe drawer with a tickable ingredient checklist, a macro breakdown per serving and a link to the original recipe
+- Copy a recipe link in one tap
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Make it yours**
+- Save favourites and find them under **Saved recipes**
+- Create a profile (emoji avatar and display name) and leave a star rating and note on any recipe
+- Dark and light themes: follows your device by default, with a switch in the sidebar that remembers your choice
 
-### `npm test`
+All personal data (favourites, reviews, profile, recent searches, layout and theme) is stored in your browser's `localStorage`. Nothing is sent to a server, and it does not sync across devices.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech stack
 
-### `npm run build`
+- [React](https://react.dev) 18, built with Create React App
+- [styled-components](https://styled-components.com) for styling, with CSS custom properties for theming
+- [Material UI](https://mui.com) for the drawer and dialog behaviour (focus trapping, escape to close)
+- [react-icons](https://react-icons.github.io/react-icons/) (Feather set) and [Axios](https://axios-http.com)
+- Fonts: [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque) and [DM Mono](https://fonts.google.com/specimen/DM+Mono)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm install
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The app runs at [http://localhost:3000](http://localhost:3000).
 
-### `npm run eject`
+| Command         | What it does                                  |
+| --------------- | --------------------------------------------- |
+| `npm start`     | Start the development server                  |
+| `npm run build` | Create an optimised production build in `build/` |
+| `npm test`      | Run the test runner                           |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Project structure
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+src/
+  App.jsx                 App state, search, filtering and page layout
+  constants.js            Filters, sort options, API credentials, storage keys
+  utils.js                Nutrition helpers and small formatters
+  hooks/
+    useStored.js          useState backed by localStorage
+    useTheme.js           Light/dark theme: device default plus manual override
+  styles/global.js        Theme tokens (dark and light) and global styles
+  components/
+    Sidebar.jsx           Search, suggestions, filters, saved, profile, theme switch
+    RecipeItems.jsx       List row, gallery tile and loading skeletons
+    RecipeDrawer.jsx      Ingredients, nutrition and review tabs
+    ProfileModal.jsx      Avatar and display name
+    StarRating.jsx, Logo.jsx, ui.js
+public/
+  index.html              Fonts, theme-colour meta and the no-flash theme script
+  noise.svg               Grain texture used by the global styles
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Theming
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Colours live in CSS custom properties in `src/styles/global.js`. The dark palette is the default; the light palette applies when the device prefers light, or when the user picks it with the switch (stored as `data-theme` on the `<html>` element). To retheme the app, change the tokens there. Components use the tokens rather than hardcoded colours.
 
-## Learn More
+## Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The site is deployed on [Netlify](https://www.netlify.com). `netlify.toml` sets the build command (`npm run build`), the publish directory (`build`) and a single-page-app redirect. Pushes to `main` deploy to production, and every pull request gets a deploy preview.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Configuration note
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The Edamam `APP_ID` and `API_KEY` are set in `src/constants.js` and ship in the client bundle, as with any key used directly from the browser. If you fork this project, get your own free keys from Edamam and replace them.
