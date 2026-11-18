@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const FilterBar = styled.div`
-  background: #ffffff;
-  border-bottom: 1px solid #E2E8F0;
+  background: #FDFAF5;
+  border-bottom: 1px solid #EAE5DA;
   padding: 10px 40px;
   display: flex;
   align-items: center;
@@ -28,7 +28,7 @@ export const FilterGroup = styled.div`
 export const FilterLabel = styled.span`
   font-size: 11px;
   font-weight: 600;
-  color: #94A3B8;
+  color: #A39B8F;
   text-transform: uppercase;
   letter-spacing: 0.07em;
   white-space: nowrap;
@@ -47,22 +47,26 @@ export const FilterPill = styled.button`
   border-radius: 9999px;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.15s ease;
-  background: ${props => props.$active ? '#7C3AED' : 'transparent'};
-  color: ${props => props.$active ? '#ffffff' : '#64748B'};
-  border: 1.5px solid ${props => props.$active ? '#7C3AED' : '#E2E8F0'};
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  background: ${props => props.$active ? '#C4511A' : 'transparent'};
+  color: ${props => props.$active ? '#ffffff' : '#6B6456'};
+  border: 1.5px solid ${props => props.$active ? '#C4511A' : '#EAE5DA'};
 
   &:hover {
     ${props => !props.$active && `
-      border-color: #7C3AED;
-      color: #7C3AED;
+      border-color: #C4511A;
+      color: #C4511A;
     `}
+  }
+
+  &:active {
+    transform: scale(0.96);
   }
 `;
 
 export const FilterDivider = styled.div`
   width: 1px;
   height: 18px;
-  background: #E2E8F0;
+  background: #EAE5DA;
   flex-shrink: 0;
 `;

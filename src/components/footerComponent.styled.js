@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const Footer = styled.footer`
   background: #ffffff;
-  border-top: 1px solid #E2E8F0;
+  border-top: 1px solid #EAE5DA;
   padding: 20px 40px;
 
   a {
     display: flex;
     align-items: center;
     gap: 6px;
-    color: #94A3B8;
+    color: #A39B8F;
     text-decoration: none;
     font-size: 13px;
     font-weight: 500;
@@ -18,7 +18,7 @@ export const Footer = styled.footer`
     transition: color 0.15s ease;
 
     :hover {
-      color: #0F172A;
+      color: #1C1A15;
     }
 
     h4 {

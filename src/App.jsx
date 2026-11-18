@@ -57,16 +57,16 @@ import {
 
 const RecipeBookLogo = () => (
   <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M14 6 C14 6 8 5 3 7 L3 24 C8 22 14 23 14 23 Z" fill="#EDE9FE" stroke="#7C3AED" strokeWidth="1.3" strokeLinejoin="round"/>
-    <path d="M14 6 C14 6 20 5 25 7 L25 24 C20 22 14 23 14 23 Z" fill="#EDE9FE" stroke="#7C3AED" strokeWidth="1.3" strokeLinejoin="round"/>
-    <line x1="14" y1="6" x2="14" y2="23" stroke="#7C3AED" strokeWidth="1.3"/>
-    <line x1="8" y1="10" x2="8" y2="19" stroke="#7C3AED" strokeWidth="1.4" strokeLinecap="round"/>
-    <line x1="6.5" y1="10" x2="6.5" y2="13" stroke="#7C3AED" strokeWidth="1.1" strokeLinecap="round"/>
-    <line x1="9.5" y1="10" x2="9.5" y2="13" stroke="#7C3AED" strokeWidth="1.1" strokeLinecap="round"/>
-    <line x1="6.5" y1="13" x2="8" y2="14.5" stroke="#7C3AED" strokeWidth="1.1" strokeLinecap="round"/>
-    <line x1="9.5" y1="13" x2="8" y2="14.5" stroke="#7C3AED" strokeWidth="1.1" strokeLinecap="round"/>
-    <ellipse cx="20" cy="12.5" rx="2" ry="2.5" fill="none" stroke="#7C3AED" strokeWidth="1.4"/>
-    <line x1="20" y1="15" x2="20" y2="21" stroke="#7C3AED" strokeWidth="1.4" strokeLinecap="round"/>
+    <path d="M14 6 C14 6 8 5 3 7 L3 24 C8 22 14 23 14 23 Z" fill="#FDF0E8" stroke="#C4511A" strokeWidth="1.3" strokeLinejoin="round"/>
+    <path d="M14 6 C14 6 20 5 25 7 L25 24 C20 22 14 23 14 23 Z" fill="#FDF0E8" stroke="#C4511A" strokeWidth="1.3" strokeLinejoin="round"/>
+    <line x1="14" y1="6" x2="14" y2="23" stroke="#C4511A" strokeWidth="1.3"/>
+    <line x1="8" y1="10" x2="8" y2="19" stroke="#C4511A" strokeWidth="1.4" strokeLinecap="round"/>
+    <line x1="6.5" y1="10" x2="6.5" y2="13" stroke="#C4511A" strokeWidth="1.1" strokeLinecap="round"/>
+    <line x1="9.5" y1="10" x2="9.5" y2="13" stroke="#C4511A" strokeWidth="1.1" strokeLinecap="round"/>
+    <line x1="6.5" y1="13" x2="8" y2="14.5" stroke="#C4511A" strokeWidth="1.1" strokeLinecap="round"/>
+    <line x1="9.5" y1="13" x2="8" y2="14.5" stroke="#C4511A" strokeWidth="1.1" strokeLinecap="round"/>
+    <ellipse cx="20" cy="12.5" rx="2" ry="2.5" fill="none" stroke="#C4511A" strokeWidth="1.4"/>
+    <line x1="20" y1="15" x2="20" y2="21" stroke="#C4511A" strokeWidth="1.4" strokeLinecap="round"/>
   </svg>
 );
 
@@ -81,7 +81,7 @@ const StarRating = ({ value, onChange, size = 15 }) => (
         onClick={() => onChange?.(star)}
         style={{ background: "none", border: "none", padding: "1px", cursor: onChange ? "pointer" : "default", display: "flex", alignItems: "center" }}
       >
-        {star <= value ? <FaStar size={size} color="#F59E0B" /> : <FaRegStar size={size} color="#CBD5E1" />}
+        {star <= value ? <FaStar size={size} color="#E8911C" /> : <FaRegStar size={size} color="#C4BAB0" />}
       </button>
     ))}
   </div>
@@ -91,7 +91,7 @@ const StarRating = ({ value, onChange, size = 15 }) => (
 
 const Container = styled.div`
   min-height: 100vh;
-  background: #F8FAFC;
+  background: #FDFAF5;
   display: flex;
   flex-direction: column;
 `;
@@ -124,13 +124,13 @@ const EmptyIcon = styled.div`
 const EmptyHeading = styled.p`
   font-size: 16px;
   font-weight: 600;
-  color: #64748B;
+  color: #6B6456;
   margin: 0;
 `;
 
 const EmptySubtext = styled.p`
   font-size: 14px;
-  color: #94A3B8;
+  color: #A39B8F;
   margin: 0;
   text-align: center;
 `;
@@ -150,11 +150,12 @@ const PopularChip = styled.button`
   padding: 5px 14px;
   border-radius: 9999px;
   cursor: pointer;
-  border: 1.5px solid #E2E8F0;
+  border: 1.5px solid #EAE5DA;
   background: #ffffff;
-  color: #64748B;
-  transition: all 0.15s ease;
-  &:hover { border-color: #7C3AED; color: #7C3AED; }
+  color: #6B6456;
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  &:hover { border-color: #C4511A; color: #C4511A; }
+  &:active { transform: scale(0.96); }
 `;
 
 const ErrorState = styled.div`
@@ -170,13 +171,13 @@ const ErrorState = styled.div`
 const ErrorHeading = styled.p`
   font-size: 16px;
   font-weight: 600;
-  color: #64748B;
+  color: #6B6456;
   margin: 0;
 `;
 
 const ErrorSubtext = styled.p`
   font-size: 14px;
-  color: #94A3B8;
+  color: #A39B8F;
   margin: 0;
 `;
 
@@ -187,12 +188,13 @@ const RetryButton = styled.button`
   padding: 8px 20px;
   border-radius: 8px;
   cursor: pointer;
-  background: #7C3AED;
+  background: #C4511A;
   color: #ffffff;
   border: none;
   margin-top: 4px;
-  transition: background 0.15s ease;
-  &:hover { background: #6D28D9; }
+  transition: background 0.15s ease, transform 0.1s ease;
+  &:hover { background: #A33E12; }
+  &:active { transform: scale(0.96); }
 `;
 
 // ——— Results bar + sort ———
@@ -200,7 +202,7 @@ const RetryButton = styled.button`
 const ResultsBar = styled.div`
   padding: 16px 40px 0;
   font-size: 13px;
-  color: #94A3B8;
+  color: #A39B8F;
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
@@ -209,7 +211,7 @@ const ResultsBar = styled.div`
   justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;
-  strong { color: #64748B; font-weight: 600; }
+  strong { color: #6B6456; font-weight: 600; }
   @media (max-width: 640px) { padding: 12px 20px 0; }
 `;
 
@@ -225,7 +227,7 @@ const SortRow = styled.div`
 const SortLabel = styled.span`
   font-size: 11px;
   font-weight: 600;
-  color: #94A3B8;
+  color: #A39B8F;
   text-transform: uppercase;
   letter-spacing: 0.07em;
   white-space: nowrap;
@@ -239,24 +241,25 @@ const SortPill = styled.button`
   border-radius: 9999px;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.15s ease;
-  background: ${p => p.$active ? '#7C3AED' : 'transparent'};
-  color: ${p => p.$active ? '#ffffff' : '#64748B'};
-  border: 1.5px solid ${p => p.$active ? '#7C3AED' : '#E2E8F0'};
-  &:hover { ${p => !p.$active && 'border-color:#7C3AED;color:#7C3AED;'} }
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  background: ${p => p.$active ? '#C4511A' : 'transparent'};
+  color: ${p => p.$active ? '#ffffff' : '#6B6456'};
+  border: 1.5px solid ${p => p.$active ? '#C4511A' : '#EAE5DA'};
+  &:hover { ${p => !p.$active && 'border-color:#C4511A;color:#C4511A;'} }
+  &:active { transform: scale(0.96); }
 `;
 
 const ClearButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  color: #CBD5E1;
+  color: #C4BAB0;
   display: flex;
   align-items: center;
   padding: 0;
   flex-shrink: 0;
   transition: color 0.15s ease;
-  &:hover { color: #94A3B8; }
+  &:hover { color: #A39B8F; }
 `;
 
 const LoadMoreButton = styled.button`
@@ -269,11 +272,12 @@ const LoadMoreButton = styled.button`
   border-radius: 9999px;
   cursor: pointer;
   background: #ffffff;
-  color: #64748B;
-  border: 1.5px solid #E2E8F0;
-  transition: all 0.15s ease;
-  &:hover:not(:disabled) { border-color: #7C3AED; color: #7C3AED; }
+  color: #6B6456;
+  border: 1.5px solid #EAE5DA;
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  &:hover:not(:disabled) { border-color: #C4511A; color: #C4511A; }
   &:disabled { opacity: 0.5; cursor: not-allowed; }
+  &:active:not(:disabled) { transform: scale(0.96); }
 `;
 
 // ——— Dialog shared buttons ———
@@ -285,12 +289,13 @@ const PrimaryDialogButton = styled.button`
   padding: 8px 18px;
   border-radius: 8px;
   cursor: pointer;
-  background: #7C3AED;
+  background: #C4511A;
   color: #ffffff;
   border: none;
-  transition: background 0.15s ease;
-  &:hover:not(:disabled) { background: #6D28D9; }
+  transition: background 0.15s ease, transform 0.1s ease;
+  &:hover:not(:disabled) { background: #A33E12; }
   &:disabled { opacity: 0.45; cursor: not-allowed; }
+  &:active:not(:disabled) { transform: scale(0.96); }
 `;
 
 const SecondaryDialogButton = styled.button`
@@ -301,10 +306,11 @@ const SecondaryDialogButton = styled.button`
   border-radius: 8px;
   cursor: pointer;
   background: transparent;
-  color: #64748B;
-  border: 1px solid #E2E8F0;
-  transition: background 0.15s ease, color 0.15s ease;
-  &:hover { background: #F8FAFC; color: #0F172A; }
+  color: #6B6456;
+  border: 1px solid #EAE5DA;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  &:hover { background: #FDFAF5; color: #1C1A15; }
+  &:active { transform: scale(0.96); }
 `;
 
 // ——— Recipe dialog: nutrition + ingredients ———
@@ -314,6 +320,8 @@ const IngredientImage = styled.img`
   height: 36px;
   border-radius: 50%;
   object-fit: cover;
+  outline: 1px solid oklch(0 0 0 / 0.1);
+  outline-offset: -1px;
 `;
 
 const DialogTable = styled.table`
@@ -323,20 +331,20 @@ const DialogTable = styled.table`
   text-transform: capitalize;
   th {
     font-weight: 600;
-    color: #64748B;
+    color: #6B6456;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     padding: 0 12px 10px;
-    border-bottom: 1px solid #E2E8F0;
+    border-bottom: 1px solid #EAE5DA;
     text-align: left;
   }
   td {
     padding: 10px 12px;
-    border-bottom: 1px solid #F1F5F9;
+    border-bottom: 1px solid #F5F0E8;
     vertical-align: middle;
     font-size: 14px;
-    color: #374151;
+    color: #3D3028;
   }
   tbody tr:last-child td { border-bottom: none; }
 `;
@@ -345,8 +353,8 @@ const NutriRow = styled.div`
   display: flex;
   gap: 8px;
   padding: 14px 16px;
-  background: #F8FAFC;
-  border-bottom: 1px solid #E2E8F0;
+  background: #FDFAF5;
+  border-bottom: 1px solid #EAE5DA;
   flex-wrap: wrap;
 `;
 
@@ -362,13 +370,13 @@ const NutriItem = styled.div`
 const NutriValue = styled.span`
   font-size: 15px;
   font-weight: 700;
-  color: #0F172A;
+  color: #1C1A15;
 `;
 
 const NutriLabel = styled.span`
   font-size: 10px;
   font-weight: 600;
-  color: #94A3B8;
+  color: #A39B8F;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 `;
@@ -380,25 +388,26 @@ const ProfileBtn = styled.button`
   align-items: center;
   gap: 7px;
   background: none;
-  border: 1.5px solid #E2E8F0;
+  border: 1.5px solid #EAE5DA;
   border-radius: 9999px;
   padding: 5px 12px 5px 6px;
   cursor: pointer;
   font-family: inherit;
   font-size: 13px;
   font-weight: 500;
-  color: #64748B;
-  transition: all 0.15s ease;
+  color: #6B6456;
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
   white-space: nowrap;
   flex-shrink: 0;
-  &:hover { border-color: #7C3AED; color: #7C3AED; }
+  &:hover { border-color: #C4511A; color: #C4511A; }
+  &:active { transform: scale(0.96); }
 `;
 
 const AvatarDot = styled.div`
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #EDE9FE;
+  background: #FDF0E8;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -417,7 +426,7 @@ const ProfileModalBody = styled.div`
 const ProfileModalLabel = styled.label`
   font-size: 12px;
   font-weight: 600;
-  color: #64748B;
+  color: #6B6456;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   display: block;
@@ -426,16 +435,16 @@ const ProfileModalLabel = styled.label`
 
 const ProfileInput = styled.input`
   width: 100%;
-  border: 1.5px solid #E2E8F0;
+  border: 1.5px solid #EAE5DA;
   border-radius: 8px;
   padding: 9px 12px;
   font-size: 14px;
   font-family: inherit;
-  color: #0F172A;
-  background: #F8FAFC;
+  color: #1C1A15;
+  background: #FDFAF5;
   box-sizing: border-box;
   transition: border-color 0.15s ease;
-  &:focus { outline: none; border-color: #7C3AED; background: #fff; }
+  &:focus { outline: none; border-color: #C4511A; background: #fff; }
 `;
 
 const AvatarGrid = styled.div`
@@ -448,16 +457,17 @@ const AvatarOption = styled.button`
   width: 100%;
   aspect-ratio: 1;
   border-radius: 10px;
-  border: 2px solid ${p => p.$selected ? '#7C3AED' : '#E2E8F0'};
-  background: ${p => p.$selected ? '#EDE9FE' : '#F8FAFC'};
+  border: 2px solid ${p => p.$selected ? '#C4511A' : '#EAE5DA'};
+  background: ${p => p.$selected ? '#FDF0E8' : '#FDFAF5'};
   font-size: 22px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.15s ease;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
   line-height: 1;
-  &:hover { border-color: #7C3AED; background: #EDE9FE; }
+  &:hover { border-color: #C4511A; background: #FDF0E8; }
+  &:active { transform: scale(0.96); }
 `;
 
 // ——— Reviews ———
@@ -474,9 +484,9 @@ const ReviewCardStyled = styled.div`
   display: flex;
   gap: 10px;
   padding: 12px;
-  background: #F8FAFC;
+  background: #FDFAF5;
   border-radius: 10px;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #EAE5DA;
 `;
 
 const ReviewMeta = styled.div`
@@ -489,17 +499,17 @@ const ReviewMeta = styled.div`
 const ReviewAuthor = styled.span`
   font-size: 13px;
   font-weight: 600;
-  color: #0F172A;
+  color: #1C1A15;
 `;
 
 const ReviewDate = styled.span`
   font-size: 11px;
-  color: #94A3B8;
+  color: #A39B8F;
 `;
 
 const ReviewText = styled.p`
   font-size: 13px;
-  color: #374151;
+  color: #3D3028;
   margin: 6px 0 0;
   line-height: 1.5;
 `;
@@ -517,12 +527,13 @@ const ReviewActionBtn = styled.button`
   padding: 3px 10px;
   border-radius: 6px;
   cursor: pointer;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #EAE5DA;
   background: transparent;
-  color: #64748B;
-  transition: all 0.15s ease;
-  &:hover { background: #F1F5F9; color: #0F172A; }
+  color: #6B6456;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  &:hover { background: #F5F0E8; color: #1C1A15; }
   &.danger:hover { background: #FEF2F2; color: #DC2626; border-color: #FECACA; }
+  &:active { transform: scale(0.96); }
 `;
 
 const ReviewFormWrapper = styled.div`
@@ -530,15 +541,15 @@ const ReviewFormWrapper = styled.div`
   flex-direction: column;
   gap: 10px;
   padding: 12px;
-  background: #F8FAFC;
+  background: #FDFAF5;
   border-radius: 10px;
-  border: 1px dashed #CBD5E1;
+  border: 1px dashed #C4BAB0;
 `;
 
 const ReviewFormLabel = styled.p`
   font-size: 12px;
   font-weight: 600;
-  color: #64748B;
+  color: #6B6456;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -546,24 +557,24 @@ const ReviewFormLabel = styled.p`
 
 const ReviewTextarea = styled.textarea`
   width: 100%;
-  border: 1.5px solid #E2E8F0;
+  border: 1.5px solid #EAE5DA;
   border-radius: 8px;
   padding: 9px 12px;
   font-size: 13px;
   font-family: inherit;
-  color: #374151;
+  color: #3D3028;
   background: #ffffff;
   resize: vertical;
   min-height: 72px;
   box-sizing: border-box;
   transition: border-color 0.15s ease;
-  &:focus { outline: none; border-color: #7C3AED; }
-  &::placeholder { color: #CBD5E1; }
+  &:focus { outline: none; border-color: #C4511A; }
+  &::placeholder { color: #C4BAB0; }
 `;
 
 const RatingPrompt = styled.p`
   font-size: 12px;
-  color: #94A3B8;
+  color: #A39B8F;
   margin: 0;
 `;
 
@@ -578,7 +589,7 @@ const SetupPromptBox = styled.div`
 
 const SetupPromptText = styled.p`
   font-size: 13px;
-  color: #94A3B8;
+  color: #A39B8F;
   margin: 0;
 `;
 
@@ -589,11 +600,12 @@ const SetupProfileBtn = styled.button`
   padding: 7px 16px;
   border-radius: 8px;
   cursor: pointer;
-  background: #7C3AED;
+  background: #C4511A;
   color: #ffffff;
   border: none;
-  transition: background 0.15s ease;
-  &:hover { background: #6D28D9; }
+  transition: background 0.15s ease, transform 0.1s ease;
+  &:hover { background: #A33E12; }
+  &:active { transform: scale(0.96); }
 `;
 
 // ——— Search suggestions ———
@@ -608,7 +620,7 @@ const SuggestionsDropdown = styled.div`
   left: 0;
   right: 0;
   background: #ffffff;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #EAE5DA;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   z-index: 200;
@@ -620,7 +632,7 @@ const SuggestionsDropdown = styled.div`
 const SuggestionSectionLabel = styled.div`
   font-size: 10px;
   font-weight: 600;
-  color: #94A3B8;
+  color: #A39B8F;
   text-transform: uppercase;
   letter-spacing: 0.07em;
   padding: 8px 14px 4px;
@@ -637,15 +649,15 @@ const SuggestionItem = styled.button`
   cursor: pointer;
   font-size: 13px;
   font-family: inherit;
-  color: #374151;
+  color: #3D3028;
   padding: 7px 14px;
   transition: background 0.1s ease;
-  &:hover { background: #F8FAFC; }
+  &:hover { background: #FDFAF5; }
 `;
 
 const SuggestionDivider = styled.div`
   height: 1px;
-  background: #F1F5F9;
+  background: #F5F0E8;
   margin: 4px 0;
 `;
 
@@ -717,7 +729,7 @@ const ProfileSetupModal = ({ open, onClose, profile, onSave }) => {
 
   return (
     <Dialog open={open} onClose={onClose} PaperProps={{ style: { borderRadius: 12, maxWidth: 380, width: "100%" } }}>
-      <DialogTitle sx={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "18px", color: "#0F172A", letterSpacing: "-0.02em", paddingBottom: "4px" }}>
+      <DialogTitle sx={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "18px", color: "#1C1A15", letterSpacing: "-0.02em", paddingBottom: "4px" }}>
         {profile ? "Edit Profile" : "Set Up Profile"}
       </DialogTitle>
       <DialogContent>
@@ -813,7 +825,7 @@ const RecipeComponent = memo(({
   return (
     <>
       <Dialog open={show} onClose={() => setShow(false)} PaperProps={{ style: { borderRadius: 12, maxWidth: 480, width: "100%" } }}>
-        <DialogTitle sx={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "18px", color: "#0F172A", letterSpacing: "-0.02em", paddingBottom: "4px" }}>
+        <DialogTitle sx={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "18px", color: "#1C1A15", letterSpacing: "-0.02em", paddingBottom: "4px" }}>
           {recipeObj.label}
         </DialogTitle>
 
@@ -832,11 +844,11 @@ const RecipeComponent = memo(({
             value={activeTab}
             onChange={(_, v) => setActiveTab(v)}
             sx={{
-              borderBottom: "1px solid #E2E8F0",
+              borderBottom: "1px solid #EAE5DA",
               minHeight: "40px",
-              "& .MuiTab-root": { fontFamily: "Inter, sans-serif", fontSize: "13px", fontWeight: 500, minHeight: "40px", textTransform: "none", color: "#64748B" },
-              "& .Mui-selected": { color: "#7C3AED !important" },
-              "& .MuiTabs-indicator": { backgroundColor: "#7C3AED" },
+              "& .MuiTab-root": { fontFamily: "Inter, sans-serif", fontSize: "13px", fontWeight: 500, minHeight: "40px", textTransform: "none", color: "#6B6456" },
+              "& .Mui-selected": { color: "#C4511A !important" },
+              "& .MuiTabs-indicator": { backgroundColor: "#C4511A" },
             }}
           >
             <Tab label="Ingredients" value="ingredients" />
@@ -854,7 +866,7 @@ const RecipeComponent = memo(({
                     <tr key={ing.text}>
                       <td style={{ width: 44 }}><IngredientImage src={ing.image} alt={ing.text} loading="lazy" /></td>
                       <td>{ing.text}</td>
-                      <td style={{ whiteSpace: "nowrap", color: "#94A3B8" }}>{ing.weight.toFixed(0)}g</td>
+                      <td style={{ whiteSpace: "nowrap", color: "#A39B8F" }}>{ing.weight.toFixed(0)}g</td>
                     </tr>
                   ))}
                 </tbody>
@@ -940,7 +952,7 @@ const RecipeComponent = memo(({
             {calories && <MetaItem><FiZap size={11} /> {calories} kcal</MetaItem>}
             {recipeObj.totalTime > 0 && <MetaItem><FiClock size={11} /> {recipeObj.totalTime} min</MetaItem>}
             {recipeObj.yield > 0 && <MetaItem><FiUsers size={11} /> {recipeObj.yield} srv</MetaItem>}
-            {myReview && <MetaItem><FaStar size={10} color="#F59E0B" /> {myReview.rating}/5</MetaItem>}
+            {myReview && <MetaItem><FaStar size={10} color="#E8911C" /> {myReview.rating}/5</MetaItem>}
           </RecipeMeta>
           {recipeObj.source && <RecipeSource>from {recipeObj.source}</RecipeSource>}
         </RecipeCardBody>
@@ -1167,7 +1179,7 @@ function App() {
                   <SuggestionSectionLabel>Recent</SuggestionSectionLabel>
                   {recentSearches.map(term => (
                     <SuggestionItem key={term} onMouseDown={() => handleSuggestionClick(term)}>
-                      <FiClock size={12} style={{ color: "#94A3B8", flexShrink: 0 }} />{term}
+                      <FiClock size={12} style={{ color: "#A39B8F", flexShrink: 0 }} />{term}
                     </SuggestionItem>
                   ))}
                   <SuggestionDivider />
@@ -1176,7 +1188,7 @@ function App() {
               <SuggestionSectionLabel>Popular</SuggestionSectionLabel>
               {POPULAR_SEARCHES.map(term => (
                 <SuggestionItem key={term} onMouseDown={() => handleSuggestionClick(term)}>
-                  <FiZap size={12} style={{ color: "#94A3B8", flexShrink: 0 }} />{term}
+                  <FiZap size={12} style={{ color: "#A39B8F", flexShrink: 0 }} />{term}
                 </SuggestionItem>
               ))}
             </SuggestionsDropdown>
@@ -1235,8 +1247,8 @@ function App() {
         ) : showInitial ? (
           <EmptyState>
             <EmptyIcon>📖</EmptyIcon>
-            <EmptyHeading>Search for a recipe</EmptyHeading>
-            <EmptySubtext>Type a food name above to get started</EmptySubtext>
+            <EmptyHeading>What are you hungry for?</EmptyHeading>
+            <EmptySubtext>Search a dish, ingredient, or cuisine to get started</EmptySubtext>
             <PopularChipsRow>
               {POPULAR_SEARCHES.map(term => <PopularChip key={term} onClick={() => setSearchQuery(term)}>{term}</PopularChip>)}
             </PopularChipsRow>
@@ -1244,8 +1256,8 @@ function App() {
         ) : noResults ? (
           <EmptyState>
             <EmptyIcon>🔍</EmptyIcon>
-            <EmptyHeading>{showFavoritesOnly ? "No saved recipes yet" : `No results for “${searchQuery}”`}</EmptyHeading>
-            <EmptySubtext>{showFavoritesOnly ? "Heart a recipe to save it here" : "Try a different search term or adjust your filters"}</EmptySubtext>
+            <EmptyHeading>{showFavoritesOnly ? "Nothing saved yet" : `No results for "${searchQuery}"`}</EmptyHeading>
+            <EmptySubtext>{showFavoritesOnly ? "Tap ♥ on any recipe to save it here" : "Try a different search term or adjust your filters"}</EmptySubtext>
           </EmptyState>
         ) : (
           <>

@@ -1,26 +1,20 @@
 import styled, { keyframes, css } from "styled-components";
 
-// ——— Shimmer animation for skeletons ———
-
 const shimmer = keyframes`
   0%   { background-position: -400px 0; }
   100% { background-position:  400px 0; }
 `;
 
 const shimmerMixin = css`
-  background: linear-gradient(90deg, #F1F5F9 25%, #E2EAF4 50%, #F1F5F9 75%);
+  background: linear-gradient(90deg, #F5F0E8 25%, #EDE7DC 50%, #F5F0E8 75%);
   background-size: 400px 100%;
   animation: ${shimmer} 1.4s ease infinite;
 `;
-
-// ——— Card entrance animation ———
 
 const fadeInUp = keyframes`
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 `;
-
-// ——— Recipe list grid ———
 
 export const RecipeListContainer = styled.div`
   display: grid;
@@ -38,13 +32,13 @@ export const RecipeListContainer = styled.div`
   }
 `;
 
-// ——— Recipe card ———
-
 export const RecipeContainer = styled.div`
   background: #ffffff;
-  border: 1px solid #E2E8F0;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
+  box-shadow:
+    0 1px 3px rgba(28, 26, 21, 0.06),
+    0 4px 12px rgba(28, 26, 21, 0.06);
   transition: box-shadow 0.2s ease, transform 0.2s ease;
   display: flex;
   flex-direction: column;
@@ -52,7 +46,9 @@ export const RecipeContainer = styled.div`
   animation-delay: ${props => Math.min((props.$index || 0) * 60, 500)}ms;
 
   &:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+    box-shadow:
+      0 2px 6px rgba(28, 26, 21, 0.06),
+      0 12px 24px rgba(28, 26, 21, 0.1);
     transform: translateY(-2px);
   }
 `;
@@ -76,12 +72,16 @@ export const FavoriteBtn = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.15s ease, transform 0.15s ease;
-  color: ${props => props.$active ? '#EF4444' : '#94A3B8'};
+  transition: background 0.15s ease, transform 0.15s ease, color 0.15s ease;
+  color: ${props => props.$active ? '#DC4A2D' : '#A39B8F'};
 
   &:hover {
     background: #fff;
     transform: scale(1.12);
+  }
+
+  &:active {
+    transform: scale(0.94);
   }
 `;
 
@@ -90,6 +90,8 @@ export const CoverImage = styled.img`
   height: 180px;
   object-fit: cover;
   display: block;
+  outline: 1px solid oklch(0 0 0 / 0.1);
+  outline-offset: -1px;
 `;
 
 export const RecipeCardBody = styled.div`
@@ -100,7 +102,7 @@ export const RecipeCardBody = styled.div`
 export const RecipeName = styled.h3`
   font-size: 15px;
   font-weight: 600;
-  color: #0F172A;
+  color: #1C1A15;
   margin: 0;
   line-height: 1.45;
   letter-spacing: -0.01em;
@@ -120,7 +122,7 @@ export const RecipeMeta = styled.div`
 
 export const MetaItem = styled.span`
   font-size: 12px;
-  color: #94A3B8;
+  color: #A39B8F;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -129,7 +131,7 @@ export const MetaItem = styled.span`
 
 export const RecipeSource = styled.p`
   font-size: 11px;
-  color: #CBD5E1;
+  color: #C4BAB0;
   margin: 5px 0 0;
   white-space: nowrap;
   overflow: hidden;
@@ -148,9 +150,9 @@ export const DietBadge = styled.span`
   font-weight: 600;
   padding: 2px 7px;
   border-radius: 9999px;
-  background: #F0FDF4;
-  color: #15803D;
-  border: 1px solid #BBF7D0;
+  background: #EBF5EE;
+  color: #1A5C34;
+  border: 1px solid #A8D5BC;
   letter-spacing: 0.02em;
 `;
 
@@ -165,17 +167,21 @@ export const IngredientsText = styled.button`
   flex: 1;
   font-size: 13px;
   font-weight: 500;
-  color: #7C3AED;
-  background: #EDE9FE;
+  color: #C4511A;
+  background: #FDF0E8;
   border: none;
-  border-radius: 7px;
+  border-radius: 8px;
   padding: 8px 0;
   cursor: pointer;
   font-family: inherit;
-  transition: background 0.15s ease;
+  transition: background 0.15s ease, transform 0.1s ease;
 
   &:hover {
-    background: #DDD6FE;
+    background: #FAE0D0;
+  }
+
+  &:active {
+    transform: scale(0.96);
   }
 `;
 
@@ -184,16 +190,20 @@ export const SeeMoreText = styled.button`
   font-size: 13px;
   font-weight: 500;
   color: #ffffff;
-  background: #7C3AED;
+  background: #C4511A;
   border: none;
-  border-radius: 7px;
+  border-radius: 8px;
   padding: 8px 0;
   cursor: pointer;
   font-family: inherit;
-  transition: background 0.15s ease;
+  transition: background 0.15s ease, transform 0.1s ease;
 
   &:hover {
-    background: #6D28D9;
+    background: #A33E12;
+  }
+
+  &:active {
+    transform: scale(0.96);
   }
 `;
 
@@ -204,25 +214,27 @@ export const CopyBtn = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  color: ${props => props.$copied ? '#15803D' : '#CBD5E1'};
+  color: ${props => props.$copied ? '#2D6A4F' : '#C4BAB0'};
   padding: 6px;
   border-radius: 6px;
-  transition: color 0.15s ease, background 0.15s ease;
+  transition: color 0.15s ease, background 0.15s ease, transform 0.1s ease;
   flex-shrink: 0;
 
   &:hover {
-    color: ${props => props.$copied ? '#15803D' : '#64748B'};
-    background: #F8FAFC;
+    color: ${props => props.$copied ? '#2D6A4F' : '#6B6456'};
+    background: #F5F0E8;
+  }
+
+  &:active {
+    transform: scale(0.9);
   }
 `;
 
-// ——— Skeleton card ———
-
 export const SkeletonCard = styled.div`
   background: #ffffff;
-  border: 1px solid #E2E8F0;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
+  box-shadow: 0 1px 3px rgba(28, 26, 21, 0.05);
 `;
 
 export const SkeletonImage = styled.div`
@@ -254,6 +266,6 @@ export const SkeletonButtons = styled.div`
 export const SkeletonButton = styled.div`
   flex: 1;
   height: 34px;
-  border-radius: 7px;
+  border-radius: 8px;
   ${shimmerMixin}
 `;
